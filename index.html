@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animated Profile Card</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+      width: 320px;
+      height: 430px;
+      perspective: 1000px;
+      transition: transform 0.8s;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .card-front {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .card-front img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #764ba2;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card-front h2 {
+      margin-top: 20px;
+      font-size: 26px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .card-front p {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+
+    .card-front:hover {
+      background: #f2f2f2;
+    }
+
+    .card-front:hover img {
+      transform: scale(1.1);
+    }
+
+    .card-front:hover h2 {
+      color: #764ba2;
+    }
+
+    .card-front:hover p {
+      color: #333;
+    }
+
+    .card-back {
+      background: #764ba2;
+      color: #fff;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .card-back h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .card-back p {
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .card-back:hover {
+      background: #667eea;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #fff;
+      color: #764ba2;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #f2f2f2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card-container {
+      perspective: 1500px;
+    }
+
+    .card {
+      width: 340px;
+      height: 470px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      border-radius: 20px;
+    }
+
+    .card-container:hover .card {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .card-front {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .card-front img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px #ffd700;
+    }
+
+    .card-front h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .card-front p {
+      font-size: 16px;
+      color: #ddd;
+      line-height: 1.5;
+    }
+
+    .card-back {
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .card-back h3 {
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 30px;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 30px;
+      transition: 0.4s;
+    }
+
+    .social-icons a:hover {
+      color: #ffd700;
+      transform: scale(1.2);
+    }
+
+    .card-container::before {
+      content: '';
+      position: absolute;
+      width: 360px;
+      height: 490px;
+      background: linear-gradient(45deg, #ff0099, #493240, #00e1ff, #ff0099);
+      background-size: 600% 600%;
+      border-radius: 22px;
+      z-index: -1;
+      animation: glow 6s ease infinite;
+      filter: blur(18px);
+    }
+
+    @keyframes glow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-inner">
+    <div class="card-front">
+      <img src="1722227784351.png" alt="Sahil Khan">
+      <h2>Sahil Khan</h2>
+      <p>Web Designer | Computer Science Student</p>
+    </div>
+    <div class="card-back">
+      <h3>About Me</h3>
+      <p>Hello! I'm Sahil Khan, passionate about technology, coding, and creative designs. Currently pursuing Computer Science and creating awesome projects like this one.</p>
+      <button class="btn">Connect</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
